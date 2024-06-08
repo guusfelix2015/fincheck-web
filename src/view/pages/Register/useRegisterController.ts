@@ -5,6 +5,7 @@ import { authService } from "../../../app/services/authService";
 import { useMutation } from "@tanstack/react-query"
 import { SignupParams } from "../../../app/services/authService/signup";
 import toast from "react-hot-toast";
+import { useAuth } from "../../../app/hooks/useAuth";
 
 
 
@@ -31,9 +32,12 @@ export function useRegisterController() {
     }
   })
 
+  const { signin } = useAuth()
+
   const handleSubmit = hookFormSubmit(async (data) => {
     const { accessToken } = await mutateAsync(data)
-    console.log({ accessToken })
+
+    signin(accessToken)
   })
 
 

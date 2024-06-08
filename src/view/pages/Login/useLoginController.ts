@@ -5,6 +5,7 @@ import { authService } from "../../../app/services/authService"
 import { SigninParams } from "../../../app/services/authService/signin"
 import { useMutation } from "@tanstack/react-query"
 import toast from "react-hot-toast"
+import { useAuth } from "../../../app/hooks/useAuth"
 
 const schema = z.object({
   email: z.string().email("Informe um e-mail válido"),
@@ -21,18 +22,20 @@ export function useLoginController() {
   const { mutateAsync, isPending } = useMutation({
     mutationFn: async (data: SigninParams) => await authService.signin(data),
     onSuccess: () => {
-      toast.success('Login successfully!')  
+      toast.success('Seja bem-vindo!')
     },
     onError: () => {
-      toast.error('Credentials invalid!')
+      toast.error('Credenciais inválidas!')
     }
   })
 
 
+  const { signin } = useAuth()
 
   const handleSubmit = hookFormHandleSubmit(async (data) => {
     const { accessToken } = await mutateAsync(data)
-    console.log({ accessToken })
+
+    signin(accessToken)
   })
 
   return {
