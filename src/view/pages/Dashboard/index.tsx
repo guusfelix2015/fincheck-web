@@ -2,6 +2,7 @@ import logo from "../../../assets/logo.svg"
 import { UserMenu } from "../../components/UserMenu"
 import { Accounts } from "./components/Accounts"
 import { DashboardProvider } from "./components/DashboadContext"
+import { Fab } from "./components/Fab"
 import { Transactions } from "./components/Transactions"
 
 
@@ -18,6 +19,7 @@ export function Dashboard() {
           <div className="md:w-1/2 w-full"><Accounts /></div>
           <div className="md:w-1/2 w-full"><Transactions /></div>
         </main>
+        <Fab />
       </div>
     </DashboardProvider>
   )
