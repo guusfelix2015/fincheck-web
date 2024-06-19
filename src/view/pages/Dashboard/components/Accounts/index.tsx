@@ -9,9 +9,19 @@ import { cn } from "../../../../../app/utils/cn";
 import { Spiner } from "../../../../components/Spiner";
 import { PlusIcon } from "@radix-ui/react-icons";
 
-
 export function Accounts() {
-  const { sliderState, setSliderState, windowWidth, areValuesVisible, toggleValuesVisibility, isLoading, accounts } = useAccountsController()
+
+  const {
+    sliderState,
+    setSliderState,
+    windowWidth,
+    areValuesVisible,
+    toggleValuesVisibility,
+    isLoading,
+    accounts,
+    openNewAccountModal
+  } = useAccountsController()
+
   return (
     <div className="bg-teal-900 rounded-2xl w-full h-full md:p-10 px-4 py-8 flex flex-col">
       {!isLoading ? (
@@ -56,7 +66,7 @@ export function Accounts() {
                 <div className="mb-4" slot="container-start">
                   <strong className="text-white tracking-[-1px] text-lg font-bold">Minhas contas</strong>
                 </div>
-                <button
+                <button onClick={openNewAccountModal}
                   className="mt-4 h-52 rounded-2xl border-2 border-dashed border-teal-600 flex flex-col items-center 
                 justify-center gap-4 text-white">
                   <div className="h-11 w-11 rounded-full border-2 border-dashed border-w flex items-center justify-center">

@@ -4,8 +4,8 @@ import { Accounts } from "./components/Accounts"
 import { DashboardProvider } from "./components/DashboadContext"
 import { Fab } from "./components/Fab"
 import { Transactions } from "./components/Transactions"
-
-
+import { NewAccountModal } from "./modals/NewAccountModal"
+import { NewTransactionModal } from "./modals/NewTransactionModal"
 
 export function Dashboard() {
   return (
@@ -16,11 +16,17 @@ export function Dashboard() {
           <UserMenu />
         </header>
         <main className="flex-1 flex gap-4 flex-col md:flex-row max-h-full">
-          <div className="md:w-1/2 w-full"><Accounts /></div>
-          <div className="md:w-1/2 w-full"><Transactions /></div>
+          <div className="md:w-1/2 w-full">
+            <Accounts />
+          </div>
+          <div className="md:w-1/2 w-full">
+            <Transactions />
+          </div>
         </main>
         <Fab />
       </div>
+      <NewAccountModal />
+      <NewTransactionModal />
     </DashboardProvider>
   )
 }

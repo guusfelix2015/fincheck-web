@@ -12,7 +12,7 @@ interface ModalProps {
 
 export function Modal({ children, title, open, rightAction, onClose }: ModalProps) {
   return (
-    <Dialog.Root open={true} onOpenChange={onClose}>
+    <Dialog.Root open={open} onOpenChange={onClose}>
       <Dialog.Portal>
         <Dialog.Overlay
           className={cn('fixed inset-0 bg-black/50 backdrop-blur-sm z-50',
