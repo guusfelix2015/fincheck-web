@@ -36,9 +36,9 @@ export function NewAccountModal() {
               defaultValue="0"
               render={({ field: { onChange, value } }) => (
                 <InputCurrency
+                  error={errors.initialBalance?.message}
                   onChange={onChange}
                   value={value}
-                  error={errors.initialBalance?.message}
                 />
               )}
             />
@@ -95,7 +95,7 @@ export function NewAccountModal() {
           />
         </div>
 
-        <Button type="submit" className="w-full mt-6" isPending={isPending}>
+        <Button type="submit" className="w-full mt-6" disabled={isPending}>
           Criar
         </Button>
       </form>

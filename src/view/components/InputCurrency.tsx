@@ -14,8 +14,11 @@ export function InputCurrency({ error, value, onChange }: InputCurrencyProps) {
       <NumericFormat
         thousandSeparator="."
         decimalSeparator=","
+        decimalScale={2} // Define o número de casas decimais
+        fixedDecimalScale={true} // Garante que sempre haverá duas casas decimais
+        allowNegative={false} // Impede valores negativos, caso desejado
         value={value}
-        onChange={event => onChange?.(event.target.value)}
+        onValueChange={(values) => onChange?.(values.value)}
         className={cn(
           'text-gray-800 text-[32px] font-bold tracking-[-1px] outline-none w-full',
           error && 'text-red-900',
@@ -29,5 +32,5 @@ export function InputCurrency({ error, value, onChange }: InputCurrencyProps) {
         </div>
       )}
     </div>
-  )
+  );
 }
