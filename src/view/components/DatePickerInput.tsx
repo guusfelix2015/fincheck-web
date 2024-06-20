@@ -25,7 +25,7 @@ export function DatePickerInput({ error, className }: DatePickerInputProps) {
             <span>{formatDate(selectedDate)}</span>
           </button>
         </Popover.Trigger>
-        <Popover.Content>
+        <Popover.Content className="shadow-xl">
           <DatePicker value={selectedDate} onChange={(date) => setSelectedDate(date)} />
         </Popover.Content>
       </Popover.Root>

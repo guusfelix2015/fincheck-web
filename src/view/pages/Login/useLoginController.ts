@@ -12,10 +12,10 @@ const schema = z.object({
   password: z.string().min(8, "Senha deve ter pelo menos 8 caracteres"),
 })
 
-type FomrData = z.infer<typeof schema>
+type FormData = z.infer<typeof schema>
 
 export function useLoginController() {
-  const { handleSubmit: hookFormHandleSubmit, register, formState: { errors } } = useForm<FomrData>({
+  const { handleSubmit: hookFormHandleSubmit, register, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
   })
 
